@@ -27,40 +27,40 @@ class WgtBottomNavigationBar extends GetView<MainController> {
               final item = items[index];
               final isSelected = controller.selectedIndex.value == index;
               return GestureDetector(
-                onTap: () => controller.changeTab(index),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
+                  onTap: () => controller.changeTab(index),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
                         decoration: BoxDecoration(
                           color: isSelected ? activeColor : backgroundColor,
-                          borderRadius: BorderRadius.circular(
-                              100), // Apply the border radius here
+                          borderRadius: BorderRadius.circular(100),
                         ),
                         height: 30,
                         width: 30,
+                        alignment: Alignment.center,
                         child: SvgPicture.asset(
                           item.icon,
-                          colorFilter: ColorFilter.mode(
-                            isSelected ? backgroundColor : activeColor,
-                            BlendMode.srcIn, // Applies the color overlay
-                          ),
+                          color: isSelected ? backgroundColor : inactiveColor,
                           width: 24,
                           height: 24,
-                        )),
-                    SizedBox(height: 4),
-                    isSelected
-                        ? Text(
-                            item.label,
-                            style: TextStyle(
-                              color: activeColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )
-                        : SizedBox.shrink(), // Return nothing when not selected
-                  ],
-                ),
-              );
+                        ),
+                      ),
+                      SizedBox(height: 4),
+                      isSelected
+                          ? Text(
+                              item.label,
+                              style: TextStyle(
+                                color: activeColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            )
+                          : SizedBox.shrink()
+                    ],
+                  ));
             }),
           )),
     );

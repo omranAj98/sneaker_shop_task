@@ -18,19 +18,19 @@ class MainView extends GetView<MainController> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: WgtBottomNavigationBar(
-        items: [
-          BottomNavItem(icon: AppIcones.home, label: "Home"),
-          BottomNavItem(icon: AppIcones.home, label: "Favorite"),
-          BottomNavItem(icon: AppIcones.home, label: "Cart"),
-          BottomNavItem(icon: AppIcones.home, label: "Profile"),
-        ],
-        backgroundColor: AppColors.white,
-        activeColor: AppColors.green,
-        inactiveColor: AppColors.black,
-      ),
-      body: Obx(() => pages[controller.selectedIndex.value]),
-    );
+    return SafeArea(
+        child: Scaffold(
+            bottomNavigationBar: WgtBottomNavigationBar(
+              items: [
+                BottomNavItem(icon: AppIcons.home, label: "Home"),
+                BottomNavItem(icon: AppIcons.favorite, label: "Favorite"),
+                BottomNavItem(icon: AppIcons.cart, label: "Cart"),
+                BottomNavItem(icon: AppIcons.account, label: "Profile"),
+              ],
+              backgroundColor: AppColors.white,
+              activeColor: AppColors.green,
+              inactiveColor: AppColors.black,
+            ),
+            body: Obx(() => pages[controller.selectedIndex.value])));
   }
 }
